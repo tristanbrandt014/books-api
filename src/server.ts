@@ -6,9 +6,10 @@ import { execute, subscribe } from "graphql";
 import { createServer } from "http";
 import { SubscriptionServer } from "subscriptions-transport-ws";
 import { schema } from "./schema";
+import cors = require("cors");
 
 const app = express();
-
+app.use(cors());
 app.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
 
 app.use(
